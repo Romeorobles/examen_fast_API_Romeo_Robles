@@ -22,3 +22,7 @@ class PlanSalida(BaseModel):
     precio_mensual: int
     nivel: int
     incluye_entrenador: bool
+
+
+
+
