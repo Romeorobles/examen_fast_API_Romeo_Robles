@@ -84,13 +84,12 @@ def planes_socio(contratados: Annotated[list[str] | None, Query()] = None):
         for c in contratados:
             codigos.add(c.upper())
 
-    total = 0
+    total = len(PLANES)
     num_contratados = 0
     disponibles = 0
     ingreso = 0
     mas_caro = None
     for p in PLANES:
-        total += 1
         if p["codigo"] in codigos:
             num_contratados += 1
         else:
