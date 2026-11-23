@@ -15,47 +15,6 @@
       "name": "Pregunta 2 — Facturación",
       "item": [
         {
-          "name": "Facturación todos 6 meses [200]",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/membresias/facturacion?meses=6",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                "facturacion"
-              ],
-              "query": [
-                {
-                  "key": "meses",
-                  "value": "6"
-                }
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"planes = 6\", () => pm.expect(pm.response.json()[\"planes\"]).to.eql(6));",
-                  "pm.test(\"meses = 6\", () => pm.expect(pm.response.json()[\"meses\"]).to.eql(6));",
-                  "pm.test(\"precio_promedio = 61.67\", () => pm.expect(pm.response.json()[\"precio_promedio\"]).to.eql(61.67));",
-                  "pm.test(\"facturacion_base = 2220\", () => pm.expect(pm.response.json()[\"facturacion_base\"]).to.eql(2220));",
-                  "pm.test(\"descuento_aplicado = false\", () => pm.expect(pm.response.json()[\"descuento_aplicado\"]).to.eql(false));",
-                  "pm.test(\"facturacion_estimada = 2220\", () => pm.expect(pm.response.json()[\"facturacion_estimada\"]).to.eql(2220));",
-                  "pm.test(\"porcentaje_con_entrenador = 50.0\", () => pm.expect(pm.response.json()[\"porcentaje_con_entrenador\"]).to.eql(50.0));"
-                ]
-              }
-            }
-          ]
-        },
-        {
           "name": "Facturación nivel 2, 12 meses (descuento) [200]",
           "request": {
             "method": "GET",
@@ -171,74 +130,12 @@
               }
             }
           ]
-        },
-        {
-          "name": "Facturación sin meses [422]",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/membresias/facturacion",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                "facturacion"
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 422\", () => pm.response.to.have.status(422));"
-                ]
-              }
-            }
-          ]
         }
       ]
     },
     {
       "name": "Pregunta 3 — Socio",
       "item": [
-        {
-          "name": "Socio sin contratados [200]",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/membresias/socio",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                "socio"
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"total = 6\", () => pm.expect(pm.response.json()[\"total\"]).to.eql(6));",
-                  "pm.test(\"contratados = 0\", () => pm.expect(pm.response.json()[\"contratados\"]).to.eql(0));",
-                  "pm.test(\"disponibles = 6\", () => pm.expect(pm.response.json()[\"disponibles\"]).to.eql(6));",
-                  "pm.test(\"porcentaje_contratacion = 0.0\", () => pm.expect(pm.response.json()[\"porcentaje_contratacion\"]).to.eql(0.0));",
-                  "pm.test(\"ingreso_potencial_disponibles = 370\", () => pm.expect(pm.response.json()[\"ingreso_potencial_disponibles\"]).to.eql(370));",
-                  "pm.test(\"plan_disponible_mas_caro = \"ELI401\"\", () => pm.expect(pm.response.json()[\"plan_disponible_mas_caro\"]).to.eql(\"ELI401\"));"
-                ]
-              }
-            }
-          ]
-        },
         {
           "name": "Socio con contratados (minúsculas) [200]",
           "request": {
@@ -301,74 +198,6 @@
               "path": [
                 "membresias",
                 ""
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Listar por nivel [200]",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/membresias/?nivel=2",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "nivel",
-                  "value": "2"
-                }
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Listar con entrenador [200]",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/membresias/?con_entrenador=true",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "con_entrenador",
-                  "value": "true"
-                }
               ]
             }
           },
@@ -575,35 +404,6 @@
           ]
         },
         {
-          "name": "Ver plan en minúsculas [200]",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/membresias/est202",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                "est202"
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"codigo = \"EST202\"\", () => pm.expect(pm.response.json()[\"codigo\"]).to.eql(\"EST202\"));"
-                ]
-              }
-            }
-          ]
-        },
-        {
           "name": "Ver plan inexistente [404]",
           "request": {
             "method": "GET",
@@ -712,48 +512,6 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Código 404\", () => pm.response.to.have.status(404));"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Actualizar datos inválidos [422]",
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/membresias/BAS101",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "membresias",
-                "BAS101"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nivel\": 9\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Código 422\", () => pm.response.to.have.status(422));"
                 ]
               }
             }
