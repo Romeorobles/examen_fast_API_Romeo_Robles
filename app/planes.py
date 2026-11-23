@@ -87,6 +87,45 @@ def facturacion_periodo(
     }
 
 
+@router.get("/socio")
+def planes_del_socio(
+    contratados: Annotated[list[str] | None, Query()] = None,
+):
+    if not PLANES:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No hay planes registrados",
+        )
+
+    codigos = set()
+    for codigo in contratados or []:
+        codigos.add(codigo.upper())
+
+    total = 0
+    cantidad_contratados = 0
+    disponibles = 0
+    ingreso_potencial = 0
+    mas_caro = None
+    for plan in PLANES:
+        total += 1
+        if plan["codigo"] in codigos:
+            cantidad_contratados += 1
+        else:
+            disponibles += 1
+            ingreso_potencial += plan["precio_mensual"]
+            if mas_caro is None or plan["precio_mensual"] > mas_caro["precio_mensual"]:
+                mas_caro = plan
+
+    return {
+        "total": total,
+        "contratados": cantidad_contratados,
+        "disponibles": disponibles,
+        "porcentaje_contratacion": round(cantidad_contratados / total * 100, 1),
+        "ingreso_potencial_disponibles": ingreso_potencial,
+        "plan_disponible_mas_caro": mas_caro["codigo"] if mas_caro else None,
+    }
+
+
 @router.get("/{codigo}", response_model=PlanSalida)
 def ver_plan(plan: PlanDep):
     return plan
