@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Gimnasio — Planes de Membresía",
+    "name": "Gimnasio - Planes de Membresia",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Ejecutar en orden con el servidor recién arrancado (datos en memoria)."
+    "description": "Ejecutar en orden con el servidor recien arrancado (datos en memoria)."
   },
   "variable": [
     {
@@ -12,10 +12,10 @@
   ],
   "item": [
     {
-      "name": "Pregunta 2 — Facturación",
+      "name": "Pregunta 2 - Facturacion",
       "item": [
         {
-          "name": "Facturación nivel 2, 12 meses (descuento) [200]",
+          "name": "Facturacion nivel 2, 12 meses (descuento) [200]",
           "request": {
             "method": "GET",
             "header": [],
@@ -46,7 +46,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Codigo 200\", () => pm.response.to.have.status(200));",
                   "pm.test(\"planes = 2\", () => pm.expect(pm.response.json()[\"planes\"]).to.eql(2));",
                   "pm.test(\"meses = 12\", () => pm.expect(pm.response.json()[\"meses\"]).to.eql(12));",
                   "pm.test(\"precio_promedio = 47.5\", () => pm.expect(pm.response.json()[\"precio_promedio\"]).to.eql(47.5));",
@@ -60,7 +60,7 @@
           ]
         },
         {
-          "name": "Facturación nivel sin planes [404]",
+          "name": "Facturacion nivel sin planes [404]",
           "request": {
             "method": "GET",
             "header": [],
@@ -91,14 +91,14 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 404\", () => pm.response.to.have.status(404));"
+                  "pm.test(\"Codigo 404\", () => pm.response.to.have.status(404));"
                 ]
               }
             }
           ]
         },
         {
-          "name": "Facturación meses fuera de rango [422]",
+          "name": "Facturacion meses fuera de rango [422]",
           "request": {
             "method": "GET",
             "header": [],
@@ -125,7 +125,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 422\", () => pm.response.to.have.status(422));"
+                  "pm.test(\"Codigo 422\", () => pm.response.to.have.status(422));"
                 ]
               }
             }
@@ -134,10 +134,10 @@
       ]
     },
     {
-      "name": "Pregunta 3 — Socio",
+      "name": "Pregunta 3 - Socio",
       "item": [
         {
-          "name": "Socio con contratados (minúsculas) [200]",
+          "name": "Socio con contratados (minusculas) [200]",
           "request": {
             "method": "GET",
             "header": [],
@@ -168,7 +168,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Codigo 200\", () => pm.response.to.have.status(200));",
                   "pm.test(\"total = 6\", () => pm.expect(pm.response.json()[\"total\"]).to.eql(6));",
                   "pm.test(\"contratados = 2\", () => pm.expect(pm.response.json()[\"contratados\"]).to.eql(2));",
                   "pm.test(\"disponibles = 4\", () => pm.expect(pm.response.json()[\"disponibles\"]).to.eql(4));",
@@ -183,7 +183,7 @@
       ]
     },
     {
-      "name": "Pregunta 1 — CRUD",
+      "name": "Pregunta 1 - CRUD",
       "item": [
         {
           "name": "Listar todos [200]",
@@ -207,14 +207,14 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));"
+                  "pm.test(\"Codigo 200\", () => pm.response.to.have.status(200));"
                 ]
               }
             }
           ]
         },
         {
-          "name": "Listar nivel inválido [422]",
+          "name": "Listar nivel invalido [422]",
           "request": {
             "method": "GET",
             "header": [],
@@ -241,7 +241,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 422\", () => pm.response.to.have.status(422));"
+                  "pm.test(\"Codigo 422\", () => pm.response.to.have.status(422));"
                 ]
               }
             }
@@ -283,7 +283,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Codigo 201\", () => pm.response.to.have.status(201));",
                   "pm.test(\"codigo = \"GYM501\"\", () => pm.expect(pm.response.json()[\"codigo\"]).to.eql(\"GYM501\"));"
                 ]
               }
@@ -291,7 +291,7 @@
           ]
         },
         {
-          "name": "Crear código duplicado [409]",
+          "name": "Crear codigo duplicado [409]",
           "request": {
             "method": "POST",
             "header": [
@@ -326,14 +326,14 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 409\", () => pm.response.to.have.status(409));"
+                  "pm.test(\"Codigo 409\", () => pm.response.to.have.status(409));"
                 ]
               }
             }
           ]
         },
         {
-          "name": "Crear datos inválidos [422]",
+          "name": "Crear datos invalidos [422]",
           "request": {
             "method": "POST",
             "header": [
@@ -368,7 +368,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 422\", () => pm.response.to.have.status(422));"
+                  "pm.test(\"Codigo 422\", () => pm.response.to.have.status(422));"
                 ]
               }
             }
@@ -396,7 +396,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Codigo 200\", () => pm.response.to.have.status(200));",
                   "pm.test(\"codigo = \"BAS101\"\", () => pm.expect(pm.response.json()[\"codigo\"]).to.eql(\"BAS101\"));"
                 ]
               }
@@ -425,7 +425,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 404\", () => pm.response.to.have.status(404));"
+                  "pm.test(\"Codigo 404\", () => pm.response.to.have.status(404));"
                 ]
               }
             }
@@ -467,7 +467,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Codigo 200\", () => pm.response.to.have.status(200));",
                   "pm.test(\"precio_mensual = 30\", () => pm.expect(pm.response.json()[\"precio_mensual\"]).to.eql(30));",
                   "pm.test(\"nombre = \"B\\u00e1sico Mensual\"\", () => pm.expect(pm.response.json()[\"nombre\"]).to.eql(\"B\\u00e1sico Mensual\"));"
                 ]
@@ -511,7 +511,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 404\", () => pm.response.to.have.status(404));"
+                  "pm.test(\"Codigo 404\", () => pm.response.to.have.status(404));"
                 ]
               }
             }
@@ -539,7 +539,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 204\", () => pm.response.to.have.status(204));"
+                  "pm.test(\"Codigo 204\", () => pm.response.to.have.status(204));"
                 ]
               }
             }
@@ -567,7 +567,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Código 404\", () => pm.response.to.have.status(404));"
+                  "pm.test(\"Codigo 404\", () => pm.response.to.have.status(404));"
                 ]
               }
             }

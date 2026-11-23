@@ -1,7 +1,7 @@
 [project]
 name = "gimnasio-membresias"
 version = "0.1.0"
-description = "API de planes de membresía de un gimnasio con FastAPI"
+description = "API de planes de membresia de un gimnasio con FastAPI"
 readme = "README.md"
 authors = [
     { name = "Romeorobles", email = "isrraelrobles742@gmail.com" }

@@ -1,7 +1,7 @@
-# Gimnasio — Planes de Membresia Examen
+# Gimnasio - Planes de Membresia Examen
 # Nombre: Romeo Robles
 
-API REST con FastAPI sobre un arreglo en memoria (Programación IV · Variante 1).
+API REST con FastAPI sobre un arreglo en memoria (Programacion IV · Variante 1).
 
 ## para ejecutar
 
