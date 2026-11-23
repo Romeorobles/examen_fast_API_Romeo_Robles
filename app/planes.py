@@ -110,7 +110,8 @@ def planes_socio(contratados: Annotated[list[str] | None, Query()] = None):
 
 @router.get("/{codigo}", response_model=PlanSalida)
 def ver_plan(plan: PlanDep):
-    return plan
+    resultado = plan
+    return resultado
 
 
 @router.patch("/{codigo}", response_model=PlanSalida)
