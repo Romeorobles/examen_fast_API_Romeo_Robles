@@ -35,7 +35,7 @@ def listar_planes(
 def crear_plan(plan: PlanCrear):
     for p in PLANES:
         if p["codigo"] == plan.codigo:
-            raise HTTPException(status_code=409, detail="El codigo ya existe")
+            raise HTTPException(status_code=409, detail=f"Ya existe un plan con el codigo {plan.codigo}")
     nuevo = plan.model_dump()
     PLANES.append(nuevo)
     return nuevo
@@ -57,7 +57,7 @@ def facturacion(
                 con_entrenador += 1
 
     if cantidad == 0:
-        raise HTTPException(status_code=404, detail="No hay planes con ese nivel")
+        raise HTTPException(status_code=404, detail="No hay planes para calcular la facturacion")
 
     base = suma * meses
     descuento = meses >= 12
